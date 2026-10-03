@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Produtos{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-header">
+    <h1>Produtos</h1>
+    <a href="{{ url_for('produtos.criar') }}" class="btn">+ Novo produto</a>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-item">
+      <span class="resumo-label">Produtos</span>
+      <strong>{{ produtos|length }}</strong>
+    </div>
+    <div class="resumo-item">
+      <span class="resumo-label">Itens em estoque</span>
+      <strong>{{ resumo.total_itens }}</strong>
+    </div>
+    <div class="resumo-item">
+      <span class="resumo-label">Valor total</span>
+      <strong>R$ {{ "%.2f"|format(resumo.valor_total) }}</strong>
+    </div>
+  </div>
+
+  {% if produtos %}
+    <input type="search" id="busca" class="input" placeholder="Buscar produto..." />
+
+    <table class="tabela" id="tabela-produtos">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th class="num">Preço</th>
+          <th class="num">Qtd.</th>
+          <th class="acoes">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in produtos %}
+          <tr>
+            <td>{{ p.nome }}</td>
+            <td class="muted">{{ p.descricao or "—" }}</td>
+            <td class="num">R$ {{ "%.2f"|format(p.preco) }}</td>
+            <td class="num {{ 'baixo' if p.quantidade < 5 }}">{{ p.quantidade }}</td>
+            <td class="acoes">
+              <a href="{{ url_for('produtos.editar', produto_id=p.id) }}" class="btn btn-sm btn-sec">Editar</a>
+              <form action="{{ url_for('produtos.excluir', produto_id=p.id) }}" method="post"
+                    class="form-excluir" data-nome="{{ p.nome }}">
+                <button type="submit" class="btn btn-sm btn-perigo">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p id="sem-resultados" class="muted" hidden>Nenhum produto encontrado.</p>
+  {% else %}
+    <p class="vazio">Nenhum produto cadastrado ainda.</p>
+  {% endif %}
+</section>
+{% endblock %}

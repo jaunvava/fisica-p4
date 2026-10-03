@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Criar conta{% endblock %} {% block
+content %}
+<section class="card card-form">
+  <h1>Criar conta</h1>
+
+  <form method="post">
+    <label for="nome_usuario">Usuário</label>
+    <input
+      class="input"
+      type="text"
+      id="nome_usuario"
+      name="nome_usuario"
+      required
+      minlength="3"
+      value="{{ dados.get('nome_usuario', '') }}"
+    />
+
+    <label for="senha">Senha</label>
+    <input
+      class="input"
+      type="password"
+      id="senha"
+      name="senha"
+      required
+      minlength="6"
+    />
+
+    <label for="confirmar_senha">Confirmar senha</label>
+    <input
+      class="input"
+      type="password"
+      id="confirmar_senha"
+      name="confirmar_senha"
+      required
+    />
+
+    <div class="botoes">
+      <a href="{{ url_for('auth.login') }}" class="btn btn-sec"
+        >Já tenho conta</a
+      >
+      <button type="submit" class="btn">Cadastrar</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

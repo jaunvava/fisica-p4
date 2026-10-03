@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set editando = produto is not none %}
+{% block title %}{{ "Editar" if editando else "Novo" }} produto{% endblock %}
+
+{% block content %}
+<section class="card card-form">
+  <h1>{{ "Editar produto" if editando else "Novo produto" }}</h1>
+
+  <form method="post" id="form-produto" novalidate>
+    <label for="nome">Nome *</label>
+    <input class="input" type="text" id="nome" name="nome" required minlength="2" maxlength="120"
+           value="{{ dados.get('nome', produto.nome if editando else '') }}" />
+
+    <label for="descricao">Descrição</label>
+    <textarea class="input" id="descricao" name="descricao" rows="3">{{ dados.get('descricao', (produto.descricao or '') if editando else '') }}</textarea>
+
+    <div class="linha">
+      <div>
+        <label for="preco">Preço (R$) *</label>
+        <input class="input" type="number" id="preco" name="preco" step="0.01" min="0.01" required
+               value="{{ dados.get('preco', produto.preco if editando else '') }}" />
+      </div>
+      <div>
+        <label for="quantidade">Quantidade *</label>
+        <input class="input" type="number" id="quantidade" name="quantidade" min="0" step="1" required
+               value="{{ dados.get('quantidade', produto.quantidade if editando else 0) }}" />
+      </div>
+    </div>
+
+    <p id="erro-form" class="erro-form" hidden></p>
+
+    <div class="botoes">
+      <a href="{{ url_for('produtos.listar') }}" class="btn btn-sec">Cancelar</a>
+      <button type="submit" class="btn">{{ "Salvar alterações" if editando else "Cadastrar" }}</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

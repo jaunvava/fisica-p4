@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Alertas: fechar no clique e sumir sozinhos após 4s
   document.querySelectorAll(".alerta").forEach((alerta) => {
     const fechar = () => {
       alerta.style.opacity = "0";
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(fechar, 4000);
   });
 
-  // Confirmação antes de excluir
   document.querySelectorAll(".form-excluir").forEach((form) => {
     form.addEventListener("submit", (e) => {
       if (!confirm(`Excluir o produto "${form.dataset.nome}"?`)) {
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Busca em tempo real na tabela
   const busca = document.getElementById("busca");
   if (busca) {
     const linhas = document.querySelectorAll("#tabela-produtos tbody tr");
@@ -36,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Validação no cliente (o service valida de novo no servidor)
   const form = document.getElementById("form-produto");
   if (form) {
     const erro = document.getElementById("erro-form");

@@ -27,7 +27,6 @@ def login():
             session["usuario_id"] = usuario.id
             flash(f"Bem-vindo, {usuario.nome_usuario}!", "sucesso")
 
-            # volta pra tela de login 
             destino = request.args.get("next", "")
             if not destino.startswith("/") or destino.startswith("//"):
                 destino = url_for("produtos.listar")

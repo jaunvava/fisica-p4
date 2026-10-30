@@ -10,7 +10,6 @@ def create_app(config_class=Config):
 
     db.init_app(app)
 
-    # Registra os controllers (Blueprints)
     from app.controllers.auth import auth_bp
     from app.controllers.produto_controller import produto_bp
 
@@ -21,9 +20,8 @@ def create_app(config_class=Config):
     def index():
         return redirect(url_for("produtos.listar"))
 
-    # Cria as tabelas no PostgreSQL caso ainda não existam
     with app.app_context():
-        from app.models import produto, usuarios  # noqa: F401
+        from app.models import produto, usuarios
 
         db.create_all()
 

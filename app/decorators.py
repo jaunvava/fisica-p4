@@ -4,8 +4,6 @@ from flask import flash, g, redirect, request, url_for
 
 
 def login_obrigatorio(view):
-    """Redireciona para o login se não houver usuário na sessão."""
-
     @wraps(view)
     def wrapper(*args, **kwargs):
         if g.get("usuario") is None:

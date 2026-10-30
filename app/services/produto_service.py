@@ -1,5 +1,3 @@
-"""Service: regras de negócio. Não acessa o banco diretamente, usa o repository."""
-
 from decimal import Decimal, InvalidOperation
 
 from app.models.produto import Produto

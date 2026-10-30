@@ -1,5 +1,3 @@
-"""Repository: única camada que conversa com o banco via Flask-SQLAlchemy."""
-
 from app.extensions import db
 from app.models.usuarios import Usuario
 

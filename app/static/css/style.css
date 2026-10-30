@@ -13,7 +13,6 @@ body {
   flex-direction: column;
 }
 
-/* Navbar */
 .navbar {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
@@ -55,7 +54,6 @@ body {
   flex: 1;
 }
 
-/* Card */
 .card {
   background: #fff;
   border-radius: 16px;
@@ -86,7 +84,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Resumo */
 .resumo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -112,7 +109,6 @@ body {
   color: #4a3f8f;
 }
 
-/* Botões */
 .btn {
   display: inline-block;
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -146,7 +142,6 @@ body {
   background: #e5484d;
 }
 
-/* Formulário */
 label {
   display: block;
   font-weight: 600;
@@ -192,7 +187,6 @@ label {
   font-weight: 600;
 }
 
-/* Tabela */
 #busca {
   margin-bottom: 16px;
 }
@@ -249,7 +243,6 @@ label {
   padding: 40px 0;
 }
 
-/* Alertas (flash) */
 .alerta {
   display: flex;
   justify-content: space-between;
@@ -286,7 +279,6 @@ label {
   font-size: 0.9rem;
 }
 
-/* Responsivo */
 @media (max-width: 640px) {
   .navbar {
     padding: 14px 16px;

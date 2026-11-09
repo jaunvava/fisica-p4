@@ -11,4 +11,5 @@ class Config:
         "DATABASE_URL",
         "postgresql+psycopg2://postgres:postgres@localhost:5432/loja",
     )
+    SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
